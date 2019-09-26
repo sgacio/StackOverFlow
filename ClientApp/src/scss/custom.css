@@ -1,0 +1,9 @@
+.navbarr {
+    display: flex;
+    background-color: darkslategray;    
+    height: 20%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
