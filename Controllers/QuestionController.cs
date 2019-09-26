@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using StackOverFlow;
+using stackoverflow;
 using StackOverFlow.Models;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +19,18 @@ namespace StackOverFlow.Controllers
       this.context = _context;
     }
 
-    [HttpGet("AllQuestions")]
-    public ActionResult<IEnumerable<Object>> GetAllQuestions()
+    [HttpGet("BasicGetAll")]
+    public ActionResult<IEnumerable<QuestionPost>> GetAll()
     {
-      var QuestionReturned = context.QuestionPosts.Join(context.AnswerPost, i => i.AnswerPostId, l => l.Id, (i, l) => new
+      var BringMeQuestions = context.QuestionPosts.OrderBy(l => l.Id);
+      return BringMeQuestions.ToList();
+    }
+
+    [HttpGet("AllAnswersJoin/{Id}")]
+    public ActionResult<IEnumerable<Object>> GetQuestionAnswers(int Id)
+    {
+      //   var context = new DatabaseContext();
+      var QuestionReturned = context.QuestionPosts.Join(context.AnswerPosts, i => i.Id, l => l.QuestionPostId, (i, l) => new
       {
         QuestionId = i.Id,
         QuestionShortDescription = i.ShortDescription,
@@ -30,12 +38,26 @@ namespace StackOverFlow.Controllers
         QuestionDate = i.DateOfPost,
         QuestionUpDown = i.PraisesForMyQuestionRelevance,
         AnswerId = l.Id,
-        AnswerContent = l.Content,
+        AnswerContent = l.AnswerContent,
         AnswerDate = l.DateOfPost,
         AnswerUpDown = l.PraisesForMyAnswer
       }
-      );
+      ).Where(s => s.QuestionId == Id);
       return QuestionReturned.ToList();
+    }
+    [HttpPost("CreateQuestion")]
+    public ActionResult<QuestionPost> CreatePost([FromBody]QuestionPost entry)
+    {
+      context.QuestionPosts.Add(entry);
+      context.SaveChanges();
+      return entry;
+    }
+
+    [HttpGet("question/{Id}")]
+    public ActionResult<IEnumerable<QuestionPost>> GetSingleQuestion(int Id)
+    {
+      var post = context.QuestionPosts.Where(i => i.Id == Id);
+      return post.ToList();
     }
   }
 }

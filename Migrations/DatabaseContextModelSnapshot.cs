@@ -30,7 +30,11 @@ namespace sdgreacttemplate.Migrations
 
                     b.Property<int>("PraisesForMyAnswer");
 
+                    b.Property<int?>("QuestionPostId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionPostId");
 
                     b.ToTable("AnswerPosts");
                 });
@@ -39,8 +43,6 @@ namespace sdgreacttemplate.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AnswersPostId");
 
                     b.Property<string>("Content");
 
@@ -52,17 +54,14 @@ namespace sdgreacttemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnswersPostId");
-
                     b.ToTable("QuestionPosts");
                 });
 
-            modelBuilder.Entity("StackOverFlow.Models.QuestionPost", b =>
+            modelBuilder.Entity("StackOverFlow.Models.AnswersPost", b =>
                 {
-                    b.HasOne("StackOverFlow.Models.AnswersPost", "AnswersPost")
-                        .WithMany()
-                        .HasForeignKey("AnswersPostId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("StackOverFlow.Models.QuestionPost", "QuestionPost")
+                        .WithMany("AnswersPosts")
+                        .HasForeignKey("QuestionPostId");
                 });
 #pragma warning restore 612, 618
         }

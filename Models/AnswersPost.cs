@@ -13,6 +13,8 @@ namespace StackOverFlow.Models
 
     public DateTime DateOfPost { get; set; } = DateTime.Now;
 
-    public List<QuestionPost> QuestionPosts = new List<QuestionPost>();
+    public int? QuestionPostId { get; set; }
+
+    public QuestionPost QuestionPost { get; set; }
   }
 }
