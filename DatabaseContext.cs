@@ -29,7 +29,7 @@ namespace stackoverflow
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
 #warning Be sure to update to your correct connection string to the point to the correct database
-        var conn = "server=localhost;database=StackOverFlowDatabase;User Id=postgres;Password=1Gmanrocks4";
+        var conn = "server=localhost;database=StackOverFlowDatabase;User Id=postgres;Password=Nicois4cool";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
