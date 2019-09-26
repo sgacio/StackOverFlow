@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using StackOverFlow.Models;
 
 namespace stackoverflow
 {
@@ -44,5 +45,7 @@ namespace stackoverflow
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+    public DbSet<QuestionPost> QuestionPosts { get; set; }
+    public DbSet<AnswersPost> AnswerPosts { get; set; }
   }
 }
