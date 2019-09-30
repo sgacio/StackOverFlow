@@ -25,7 +25,7 @@ export const Home = () => {
                         <Link to={`/question/${e.id}`}>
                             <Question 
                                 title={e.shortDescription}
-                                shortDesc={e.content.substring(0, 20)}
+                                // shortDesc={e.content.substring(0, 20)}
                                 praise={e.praisesForMyQuestionRelevance} 
                                 date={e.dateOfPost} /> 
                             {console.log(e)}
