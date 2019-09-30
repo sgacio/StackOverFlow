@@ -14,7 +14,5 @@ namespace StackOverFlow.Models
     public DateTime DateOfPost { get; set; } = DateTime.Now;
 
     public int? QuestionPostId { get; set; }
-
-    public QuestionPost QuestionPost { get; set; }
   }
 }

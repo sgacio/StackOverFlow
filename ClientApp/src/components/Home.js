@@ -1,32 +1,38 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Question} from './Question';
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 export const Home = () => {
+    const [data, setData] = useState([])
+
+    const getData = () => {
+        axios.get('https://localhost:5001/api/Question/BasicGetAll')
+            .then(res => {
+                setData(res.data)
+            })
+    }
+
+    useEffect(() => {
+        getData()
+    }, []);
+
     return (
         <>
-            <nav className="navbarr">
-                <h2 className="title">Suncoast Overflow</h2>
-                <span className="question-count">... questions</span>
-                <input className="btn btn-success" type="button" value="Got Question?" />
-            </nav>
-
-            <ul className="question-list">
-                <li className="question-body">
-                    <h3 className="question-title">This is the TLDR for the question</h3>
-
-                    <p className="question-shortdesc">
-                        First like 150 characters or something like that. I don't know what to write here though so 
-                        I'm just going to fill some of the space to make it look a little bit better.
-                    </p>
-
-                    <h5 className="question-user">User who asked the question</h5>
-
-                    <div>
-                        <span className="praise">Praises: </span>
-                        <span className="answers">Answers: </span>
-                        <span className="views">Views: </span>
-                    </div>
-                </li>
-            </ul>
+            {data.map((e, i) => {
+                return (
+                    <li key={i}>
+                        <Link to={`/question/${e.id}`}>
+                            <Question 
+                                title={e.shortDescription}
+                                shortDesc={e.content.substring(0, 20)}
+                                praise={e.praisesForMyQuestionRelevance} 
+                                date={e.dateOfPost} /> 
+                            {console.log(e)}
+                        </Link>
+                    </li>
+                )
+            })}
         </>
     );
 }

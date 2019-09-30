@@ -29,21 +29,8 @@ namespace StackOverFlow.Controllers
     [HttpGet("AllAnswersJoin/{Id}")]
     public ActionResult<IEnumerable<Object>> GetQuestionAnswers(int Id)
     {
-      //   var context = new DatabaseContext();
-      var QuestionReturned = context.QuestionPosts.Join(context.AnswerPosts, i => i.Id, l => l.QuestionPostId, (i, l) => new
-      {
-        QuestionId = i.Id,
-        QuestionShortDescription = i.ShortDescription,
-        QuestionContent = i.Content,
-        QuestionDate = i.DateOfPost,
-        QuestionUpDown = i.PraisesForMyQuestionRelevance,
-        AnswerId = l.Id,
-        AnswerContent = l.AnswerContent,
-        AnswerDate = l.DateOfPost,
-        AnswerUpDown = l.PraisesForMyAnswer
-      }
-      ).Where(s => s.QuestionId == Id);
-      return QuestionReturned.ToList();
+      var answers = context.AnswerPosts.Where(x => x.QuestionPostId == Id); 
+      return answers.ToList();
     }
     [HttpPost("CreateQuestion")]
     public ActionResult<QuestionPost> CreatePost([FromBody]QuestionPost entry)
