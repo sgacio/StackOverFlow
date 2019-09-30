@@ -11,11 +11,10 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
-
         <Router>
+          <Navbar />
           <Switch>
-            <Route exact path='/question/{questionId}' component={SpecificQuestion} />
+            <Route exact path='/question/:id' component={SpecificQuestion} />
             <Route exact path='/createquestion' component={CreateQuestion} />
             <Route exact path='/home' component={Home} />
           </Switch>

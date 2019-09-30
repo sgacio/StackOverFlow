@@ -19,22 +19,17 @@ export const Home = () => {
 
     return (
         <>
-            <nav className="navbarr">
-                <h2 className="title">Suncoast Overflow</h2>
-                <span className="question-count">... questions</span>
-                <Link to='createquestion'>
-                    <input className="btn btn-success" type="button" value="Got Question?" />
-                </Link>
-            </nav>
-
             {data.map((e, i) => {
                 return (
                     <li key={i}>
-                        <Question 
-                            title={e.shortDescription}
-                            shortDesc={e.content.substring(0, 20)}
-                            praise={e.praisesForMyQuestionRelevance} 
-                            date={e.dateOfPost}/> 
+                        <Link to={`/question/${e.id}`}>
+                            <Question 
+                                title={e.shortDescription}
+                                shortDesc={e.content.substring(0, 20)}
+                                praise={e.praisesForMyQuestionRelevance} 
+                                date={e.dateOfPost} /> 
+                            {console.log(e)}
+                        </Link>
                     </li>
                 )
             })}
