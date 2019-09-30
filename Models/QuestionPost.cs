@@ -11,6 +11,8 @@ namespace StackOverFlow.Models
 
     public string Content { get; set; }
 
+    public int NumberOfViews { get; set; }
+
     public int PraisesForMyQuestionRelevance { get; set; }
 
     public DateTime DateOfPost { get; set; } = DateTime.Now;
