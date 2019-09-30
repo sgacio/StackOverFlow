@@ -59,5 +59,14 @@ namespace StackOverFlow.Controllers
       var post = context.QuestionPosts.Where(i => i.Id == Id);
       return post.ToList();
     }
+
+    [HttpPost("NumberOfViews/{Id}")]
+    public ActionResult<Int32> postViews(int Id)
+    {
+      var question = context.QuestionPosts.FirstOrDefault(l => l.Id == Id);
+      // var views = question.FirstOrDefault(l => l.NumberOfViews);
+      var counter = question.NumberOfViews + 1;
+      return counter;
+    }
   }
 }
