@@ -7,7 +7,7 @@ namespace StackOverFlow.Models
   {
     public int Id { get; set; }
 
-    public string AnswerContent { get; set; }
+     public string AnswerContent { get; set; }
 
     public int PraisesForMyAnswer { get; set; }
 
