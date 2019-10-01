@@ -9,6 +9,8 @@ namespace StackOverFlow.Models
 
     public string ShortDescription { get; set; }
 
+    public int NumberOfViews { get; set; }
+
     public string Content { get; set; }
 
     public int NumberOfViews { get; set; }
