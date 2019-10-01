@@ -46,6 +46,7 @@ namespace StackOverFlow.Controllers
       var post = context.QuestionPosts.Where(i => i.Id == Id);
       return post.ToList();
     }
+    
     [HttpPut("numberOfViews/{Id}")]
     public ActionResult<Int32> postViews(int Id)
     {
@@ -55,6 +56,7 @@ namespace StackOverFlow.Controllers
       question.NumberOfViews += 1;
       context.SaveChanges();
       return question.NumberOfViews;
+
     }
   }
 }
