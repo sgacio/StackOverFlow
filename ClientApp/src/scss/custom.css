@@ -1,3 +1,7 @@
+:root {
+    background-color: rgb(155, 126, 184);
+}
+
 .navbarr {
     display: flex;
     background-color: darkslategray;
@@ -8,6 +12,13 @@
     justify-content: space-between;
     align-items: center;
     color: white;
+}
+
+.main-container {
+    background-color: rgb(155, 126, 184);
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
 
 .title {
@@ -27,15 +38,11 @@
     list-style-type: none;
 }
 
-/* .big-container {
-    display: flex;
-    /* text-align: center; */
-/* } */
-
-
 .list {
     list-style-type: none;
     border: .3rem solid black;
+    border-radius: 30px;
+    padding: .5rem;
     width: 25rem;
     margin: 1rem;
     background-color: bisque;
@@ -43,4 +50,65 @@
 
 .link {
     font-size: 2rem;
+}
+
+.create-container {
+    background-color: rgb(155, 126, 184);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+    padding: 1rem;
+    margin-top: 10rem;
+    border: .5rem solid black;
+    background-color: bisque;
+}
+
+.title-container {
+    height: 2rem;
+    width: 20rem;
+    margin-bottom: 1rem;
+    margin-left: 35rem;
+}
+
+.content-container {
+    height: 5rem;
+    width: 40rem;
+    margin-bottom: 1rem;
+    margin-left: 25rem;
+}
+
+.submit {
+    height: 2rem;
+    width: 20rem;
+    margin-left: 35rem;
+}
+
+.specific-container {
+    margin-top: 2rem;
+    margin-left: 40rem;
+    margin-bottom: 2rem;
+}
+
+.things {
+    /* border: .1rem dotted black; */
+}
+
+.answer-container {
+    list-style-type: none;
+    margin-top: 3rem;
+    margin-left: 40rem;
+}
+
+.container {
+    background-color: rgb(155, 126, 184);
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
