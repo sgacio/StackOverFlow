@@ -17,21 +17,26 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className="main-container">
-      <ul className="flexMePls">
+    <div>
+      <ul className="container-fluid">
         {data.map((e, i) => {
           return (
-            <li className="list" key={i}>
-              <Link className="link" to={`/question/${e.id}`}>
-                <Question
-                  title={e.shortDescription}
-                  shortDesc={e.content.substring(0, 20)}
-                  praise={e.praisesForMyQuestionRelevance}
-                  date={e.dateOfPost}
-                />
-                {console.log(e)}
-              </Link>
-            </li>
+            <div className="card m-5 justify-content-center" key={i}>
+              <div className="card-header">
+                <Link
+                  className="list-group list-group-flush"
+                  to={`/question/${e.id}`}
+                >
+                  <Question
+                    className="list-group-item"
+                    title={e.shortDescription}
+                    shortDesc={e.content}
+                    praise={e.praisesForMyQuestionRelevance}
+                    date={e.dateOfPost}
+                  />
+                </Link>
+              </div>
+            </div>
           )
         })}
       </ul>

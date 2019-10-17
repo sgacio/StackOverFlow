@@ -21,8 +21,8 @@ export const CreateQuestion = () => {
   }
 
   return (
-    <main className="create-container">
-      <form className="form-container" onSubmit={addQuestion}>
+    <main className="card m-xl-2">
+      <form className="card-body" onSubmit={addQuestion}>
         <input
           className="title-container"
           placeholder="Title"
@@ -37,7 +37,7 @@ export const CreateQuestion = () => {
           type="text"
           onChange={updateContent}
         />
-        <button className="submit">Submit</button>
+        <button className="submit btn btn-primary">Submit</button>
       </form>
     </main>
   )

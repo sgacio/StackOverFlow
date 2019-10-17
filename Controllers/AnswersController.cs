@@ -5,6 +5,7 @@ using stackoverflow;
 using StackOverFlow.Models;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using StackOverFlow.ViewModels;
 
 namespace StackOverFlow.Controllers
 {
@@ -19,12 +20,33 @@ namespace StackOverFlow.Controllers
       this.context = _context;
     }
 
-    [HttpPost("CreateAnswer")]
-    public ActionResult<AnswersPost> CreateAnswer([FromBody]AnswersPost entry)
+    [HttpPost("CreateAnswer/other")]
+    public ActionResult<AnswersPost> nCreateAnswer([Bind("answerContent,questionPostId")] AnswersPost entry)
     {
       context.AnswerPosts.Add(entry);
       context.SaveChanges();
       return entry;
+    }
+
+    [HttpPost("CreateAnswer")]
+
+    public ActionResult<AnswersPost> CreateAnswer([FromBody]AnswerVM entry)
+    {
+      if (context.QuestionPosts.Any(a => a.Id == entry.QuestionPostId))
+      {
+        var nAnswer = new AnswersPost
+        {
+          AnswerContent = entry.AnswerContent,
+          QuestionPostId = entry.QuestionPostId
+        };
+        context.AnswerPosts.Add(nAnswer);
+        context.SaveChanges();
+        return nAnswer;
+      }
+      else
+      {
+        return BadRequest();
+      }
     }
 
     [HttpGet("AllAnswers")]

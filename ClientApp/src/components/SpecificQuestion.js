@@ -34,20 +34,23 @@ export const SpecificQuestion = props => {
   }, [])
 
   return (
-    <main className="container">
-      <div className="specific-container">
-        <h1>Title: {question.shortDescription}</h1>
-        <p>Content: {question.content}</p>
+    <main className="card m-sm-1">
+      <div className="card-body">
+        <h1 className="card-title">Title: {question.shortDescription}</h1>
+        <p className="card-text">Content: {question.content}</p>
 
-        <p>Date Created: {question.dateOfPost}</p>
-        <p>Praise: {question.praisesForMyQuestionRelevance}</p>
+        <p className="card-text">Date Created: {question.dateOfPost}</p>
+        <p className="card-text">
+          Praise: {question.praisesForMyQuestionRelevance}
+        </p>
       </div>
       <div className="things"></div>
 
       {answers.map((item, i) => {
         return (
-          <li className="answer-container" key={i}>
+          <li className="card m-sm-1" key={i}>
             <Answer
+              className="card-body"
               content={item.answerContent}
               date={item.dateOfPost}
               praise={item.praisesForMyAnswer}
